@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Akaunting\Money\Casts\MoneyCast;
-use App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,9 +25,4 @@ class Order extends Model
         'delivery_charge' => MoneyCast::class,
         'total_charge' => MoneyCast::class,
     ];
-
-    protected static function booted()
-    {
-        static::observe(OrderObserver::class);
-    }
 }

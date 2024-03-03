@@ -12,7 +12,7 @@ class CreateOrder extends Component
     public function render()
     {
         return view('livewire.create-order', [
-            'totalCharge' => $this->form->totalCharge(),
+            'totalCharge' => $this->form->totalCharge()->format(),
         ]);
     }
 

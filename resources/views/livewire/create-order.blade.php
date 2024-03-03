@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-5">
     <x-auth-validation-errors :errors="$errors" />
-    <form wire:submit="save" class="grid md:grid-cols-4 gap-2 w-full">
+    <form wire:submit="save" class="grid w-full gap-2 md:grid-cols-4">
         <div class="flex flex-col">
             <strong>{{ __('Quantity') }}</strong>
             <x-input type="number" step="1" wire:model.live.debounce="form.quantity"/>
@@ -15,8 +15,8 @@
                 {{ $totalCharge }}
             </div>
         </div>
-        <div class="flex justify-center items-center">
-            <x-button type="submit" class="md:h-1/2 max-w-fit justify-center" wire:loading.attr="disabled">
+        <div class="flex items-center justify-center">
+            <x-button type="submit" class="max-w-fit justify-center md:h-1/2" wire:loading.attr="disabled">
                 {{  __('Record Sales') }}
             </x-button>
         </div>

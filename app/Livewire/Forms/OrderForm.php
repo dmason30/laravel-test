@@ -32,10 +32,11 @@ class OrderForm extends Form
             'unit_cost' => Money::GBP($this->unitCost, true),
             'profit_margin_percentage' => $this->profitMarginPercentage,
             'delivery_charge' => Money::GBP($this->deliveryCharge),
+            'total_charge' => $this->totalCharge(),
         ]);
     }
 
-    public function totalCharge(): string
+    public function totalCharge(): Money
     {
         $total = Money::GBP(0);
 
@@ -48,6 +49,6 @@ class OrderForm extends Form
             );
         }
 
-        return $total->format();
+        return $total;
     }
 }
