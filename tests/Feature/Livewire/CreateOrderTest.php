@@ -44,6 +44,7 @@ class CreateOrderTest extends TestCase
             ->assertRedirect(route('coffee.sales'));
 
         $order = Order::first();
+        $this->assertSame($product->getKey(), $order->product_id);
         $this->assertSame(10, $order->quantity);
         $this->assertSame(12.5, $order->unit_cost->getValue());
         $this->assertSame(25, $order->profit_margin_percentage);
