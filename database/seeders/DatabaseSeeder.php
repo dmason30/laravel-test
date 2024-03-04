@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'sales@coffee.shop',
         ]);
 
-        Order::factory(5)->create();
+        $this->call(ProductSeeder::class);
+
+        $productIds = Product::query()
+            ->take(5)
+            ->get()
+            ->map(fn (Product $product) => [
+                'product_id' => $product->getKey(),
+            ])
+            ->toArray();
+
+        Order::factory(5)->sequence(...$productIds)->create();
     }
 }
