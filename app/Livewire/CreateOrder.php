@@ -31,7 +31,7 @@ class CreateOrder extends Component
     {
         return view('livewire.create-order', [
             'products' => Product::orderBy('name')->get(),
-            'totalCharge' => $this->totalCharge(),
+            'totalCharge' => $this->totalCharge()->format(),
         ]);
     }
 
